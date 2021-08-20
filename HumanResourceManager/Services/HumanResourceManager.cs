@@ -10,14 +10,14 @@ namespace HumanResourceManager.Services
 {
     class HumanResourceManager : IHumanResourceManager
     {
-        public Department[] Departments => throw new NotImplementedException();
+        public List<Department> Departments => throw new NotImplementedException();
 
-        public void AddDepartment(string Name, int WorkerLimit, int SalaryLimit)
+        public void AddDepartment(Department department)
         {
             throw new NotImplementedException();
         }
 
-        public void AddEmployee(string No, string FullName, double Salary, string Position, string DepartmentName)
+        public void AddEmployee(Employee employee, string departmentName)
         {
             throw new NotImplementedException();
         }
@@ -27,17 +27,17 @@ namespace HumanResourceManager.Services
             throw new NotImplementedException();
         }
 
-        public void EditEmployee(string No, string FullName, double Salary, string Position)
+        public void EditEmployee(int no, string fullName, double salary, string position)
         {
             throw new NotImplementedException();
         }
 
-        public void GetDepartments(Department Departaments)
+        public List<Department> GetDepartments()
         {
             throw new NotImplementedException();
         }
 
-        public void RemoveEmployee(string No, string Name)
+        public void RemoveEmployee(int no, string departmentName)
         {
             throw new NotImplementedException();
         }

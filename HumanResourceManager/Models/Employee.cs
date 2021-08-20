@@ -74,7 +74,7 @@ namespace HumanResourceManager.Models
         public string DepartmentName { get; set; }
         public override string ToString()
         {
-            return $"No: {No} FullName: {FullName} Position: {Position}  Saalry: {Salary} DepartmentName: { DepartmentName}";
+            return $"No: {No} FullName: {FullName} Position: {Position}  Salary: {Salary} DepartmentName: { DepartmentName}";
         }
     }
 }
