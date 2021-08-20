@@ -1,0 +1,7 @@
+C:\Users\HP\source\repos\HumanResourceManager\HumanResourceManager\obj\Debug\HumanResourceManager.csproj.AssemblyReference.cache
+C:\Users\HP\source\repos\HumanResourceManager\HumanResourceManager\obj\Debug\HumanResourceManager.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\HumanResourceManager\HumanResourceManager\bin\Debug\HumanResourceManager.exe.config
+C:\Users\HP\source\repos\HumanResourceManager\HumanResourceManager\bin\Debug\HumanResourceManager.exe
+C:\Users\HP\source\repos\HumanResourceManager\HumanResourceManager\bin\Debug\HumanResourceManager.pdb
+C:\Users\HP\source\repos\HumanResourceManager\HumanResourceManager\obj\Debug\HumanResourceManager.exe
+C:\Users\HP\source\repos\HumanResourceManager\HumanResourceManager\obj\Debug\HumanResourceManager.pdb
