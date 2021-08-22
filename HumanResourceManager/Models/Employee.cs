@@ -4,22 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HumanResourceManager.Models
+namespace HumanResourceManagment.Models
 {
     class Employee
     {
-        public Employee(string position) 
+        public Employee()
         {
-            Counter++;
-            No = DepartmentName.Substring(0, 2).ToUpper() + Counter;
-
-            position = Position;
 
         }
+
+        public Employee(string fullName,string departmentName, string position, double salary) 
+        {
+            Counter++;
+           this.No = departmentName.Substring(0, 2).ToUpper() + Counter;
+           this.Position=position;
+           this.DepartmentName = departmentName;
+           this.Salary = salary;
+           this.FullName = FullName;
+        }
+
+        
         private static int Counter = 1000;
+        private double _salary;
+        private string _position;
+
         public string No { get; set; }
         public string FullName { get; set; }
-        private double _salary;
+        public string DepartmentName { get; set; }
+
         public double Salary 
         {
             get 
@@ -28,7 +40,7 @@ namespace HumanResourceManager.Models
             } 
             set 
             {
-                if (value > 250)
+                if (value >= 250)
                 {
                     _salary = value;
                 }
@@ -38,7 +50,7 @@ namespace HumanResourceManager.Models
                 }
             } 
         }
-        private string _position;
+        
         public string Position {
             get
             {
@@ -71,10 +83,12 @@ namespace HumanResourceManager.Models
             }
             return true;
         }
-        public string DepartmentName { get; set; }
+       
         public override string ToString()
         {
             return $"No: {No} \nFullName: {FullName} \nPosition: {Position}  \nSalary: {Salary} \nDepartmentName: { DepartmentName}";
         }
     }
 }
+
+    

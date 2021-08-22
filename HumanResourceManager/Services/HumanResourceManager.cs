@@ -1,12 +1,12 @@
 ﻿using System;
-using HumanResourceManager.Interfaces;
+using HumanResourceManagment.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HumanResourceManager.Models;
+using HumanResourceManagment.Models;
 
-namespace HumanResourceManager.Services
+namespace HumanResourceManagment.Services
 {
     class HumanResourceManager : IHumanResourceManager
     {
@@ -25,12 +25,12 @@ namespace HumanResourceManager.Services
         public void AddDepartment(Department department)
         {
             _departments.Add(department);
-        }
+        }                           //Create department and add department to Departments list
         
         public void AddEmployee(Employee employee, string DepartmentName)
         {
             _employee.Add(employee);
-        }
+        }         //Create employee and add employee to Employees list
 
         public void EditDepartaments(string name, string newname)
         {
@@ -49,12 +49,12 @@ namespace HumanResourceManager.Services
                 }
             }
 
-        }
+        }                //Change on the department
 
         public List<Department> GetDepartments()
         {
             return _departments;
-        }
+        }                                //Returns all departments in the system
 
         public void RemoveEmployee(string employeeno, string departmentName)
         {
@@ -62,7 +62,7 @@ namespace HumanResourceManager.Services
             var RemoveItem = _employee.Find(e => e.No.ToLower() == employeeno.ToLower() && e.DepartmentName.ToLower() == departmentName.ToLower());
             _employee.Remove(RemoveItem);
 
-        }
+        }   //dDlete the numbered employee from the employee list
 
         public Department FindDepartmentByName(string name)
 
@@ -74,12 +74,14 @@ namespace HumanResourceManager.Services
                 }
             }
                return null;
-        }
+        }                   //Finding according to the name of the department
 
         public List<Employee> EditEmployee(string no, string fullName, double salary, string position)
         {
             return _employee.FindAll(e => e.No.ToLower() == no.ToLower() && e.FullName.ToLower() == fullName.ToLower() && e.Salary == salary && e.Position.ToLower() == position.ToLower());
-        }
+        }   //Change on the employee
+
+
     }
 
 }

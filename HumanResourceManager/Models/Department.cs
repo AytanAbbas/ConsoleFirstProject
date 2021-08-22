@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HumanResourceManager.Models
+namespace HumanResourceManagment.Models
 {
     class Department
     {  
         private string _name;
-       
+        private int _workerLimit;
+        private double _salaryLimit;
+
         public string Name
         {
             get
@@ -41,10 +43,14 @@ namespace HumanResourceManager.Models
                 {
                     return false;
                 }
+                else 
+                {
+                   
+                }
             }
             return true;
         }
-        private int _workerLimit;
+        
         public int WorkerLimit 
         {
             get 
@@ -64,7 +70,7 @@ namespace HumanResourceManager.Models
             }
             
         }
-        private double _salaryLimit;
+       
         public double SalaryLimit
         { get 
            {
@@ -83,7 +89,7 @@ namespace HumanResourceManager.Models
             }
         }
         
-        public List<Employee> Employees { get; }
+        public List<Employee> Employees { get; set; }
          
 
         public double CalcSalaryAvarage( )
