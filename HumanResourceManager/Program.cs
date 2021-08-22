@@ -10,6 +10,7 @@ namespace HumanResourceManager
     {
         static void Main(string[] args)
         {
+            
         }
     }
 }

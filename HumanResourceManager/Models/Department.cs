@@ -90,9 +90,9 @@ namespace HumanResourceManager.Models
         {
             double result = 0;
             double SalaryAvarage = 0;
-            foreach (var item in Employees)
+            foreach (Employee employee in Employees)
             {
-                result += item.Salary;
+                result += employee.Salary;
             }
             if (Employees.Count > 0)
             {
