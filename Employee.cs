@@ -4,29 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HumanResourceManagment.Models
+namespace HumanResourceManager.Models
 {
     class Employee
     {
-        public Employee()
-        {
-
-        }
-
-        public Employee(string fullName,string departmentName, string position, double salary) 
-        {
-            Counter++;
-           this.No = departmentName.Substring(0, 2).ToUpper() + Counter;
-           this.Position=position;
-           this.DepartmentName = departmentName;
-           this.Salary = salary;
-           this.FullName = FullName;
-        }
-
         
-        private static int Counter = 1000;
-        private double _salary;
+        private static int Counter = 1000; 
         private string _position;
+        private double _salary;
 
         public string No { get; set; }
         public string FullName { get; set; }
@@ -40,7 +25,7 @@ namespace HumanResourceManagment.Models
             } 
             set 
             {
-                if (value >= 250)
+                if (value > 250)
                 {
                     _salary = value;
                 }
@@ -50,7 +35,6 @@ namespace HumanResourceManagment.Models
                 }
             } 
         }
-        
         public string Position {
             get
             {
@@ -74,21 +58,35 @@ namespace HumanResourceManagment.Models
             {
                 return false;
             }
-            //foreach (char item in position) 
-            //{
-            //    if (!Char.IsLetter(item)) 
-            //    {
-            //        return false;
-            //    }
-            //}
+            else
+            {
+
+            foreach (char item in position) 
+            {
+                if (!Char.IsLetter(item)) 
+                {
+                    return false;
+                }
+            }
             return true;
+            }
         }
-       
+
+        public Employee(string fullName,string departmentName, string position ,double salary)
+        {
+            Counter++;
+            this.DepartmentName = departmentName;
+            this.No = departmentName.Substring(0, 2).ToUpper() + Counter;
+            this.Position = position;
+            this.Salary = salary;
+            this.FullName = fullName;
+
+        }
+
+
         public override string ToString()
         {
             return $"No: {No} \nFullName: {FullName} \nPosition: {Position}  \nSalary: {Salary} \nDepartmentName: { DepartmentName}";
         }
     }
 }
-
-    

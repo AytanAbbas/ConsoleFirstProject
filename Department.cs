@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic; 
 
-namespace HumanResourceManagment.Models
+namespace HumanResourceManager.Models
 {
     class Department
     {  
         private string _name;
         private int _workerLimit;
         private double _salaryLimit;
-
+       
         public string Name
         {
             get
@@ -31,26 +28,6 @@ namespace HumanResourceManagment.Models
             }
 
         }
-        private bool checkName(string name)
-        {
-            if (name.Length < 2)
-            {
-                return false;
-            }
-            //foreach (char item in name)
-            //{
-            //    if (!Char.IsLetter(item))
-            //    {
-            //        return false;
-            //    }
-            //    else 
-            //    {
-                   
-            //    }
-            //}
-            return true;
-        }
-        
         public int WorkerLimit 
         {
             get 
@@ -59,7 +36,7 @@ namespace HumanResourceManagment.Models
             }
             set
             {
-                if (value > 1) 
+                if (value >= 1) 
                 {
                     _workerLimit = value;
                 }
@@ -70,7 +47,6 @@ namespace HumanResourceManagment.Models
             }
             
         }
-       
         public double SalaryLimit
         { get 
            {
@@ -88,11 +64,37 @@ namespace HumanResourceManagment.Models
                 }
             }
         }
-        
-        public List<Employee> Employees { get; set; }
-         
+        private bool checkName(string name)
+        {
+            if (name.Length < 2)
+            {
+                return false;
+            }
+            else
+            {
 
-        public double CalcSalaryAvarage( )
+            foreach (char item in name)
+            {
+                if (!Char.IsLetter(item))
+                {
+                    return false;
+                }
+            }
+            return true;
+            }
+        }
+        
+        public List<Employee> Employees { get; }
+
+        public Department(string name, int workerLimit, double salaryLimit, List<Employee> employees )
+        {
+            Name = name;
+            this.WorkerLimit = workerLimit;
+            this.SalaryLimit = salaryLimit;
+            this.Employees = employees;
+        }
+
+        public double CalcSalaryAvarage()
         {
             double result = 0;
             double SalaryAvarage = 0;

@@ -13,7 +13,9 @@ namespace HumanResourceManager.Services
     {
         
         private List<Department> _departments;
-        public List<Department> Departments => _departments; 
+        public List<Department> Departments => _departments;
+        private List<Employee> _employee;
+        public List<Employee> Employees => _employee;
 
         public HumanResourceManagerr() 
         {
@@ -30,7 +32,7 @@ namespace HumanResourceManager.Services
                  
             }
             Console.WriteLine("===============================\n");
-        }
+        }    // Show the list of departments
 
         public void ShowAllEmpoyees()
         {
@@ -43,7 +45,8 @@ namespace HumanResourceManager.Services
                 }
             }
 
-        }
+        }   //Show a list of employees
+        
         public void ShowEmployeesOfADepartment()
         {
             {
@@ -68,7 +71,7 @@ namespace HumanResourceManager.Services
                     }
               
             }
-        }
+        }   //List of employees in the department
         public void AddDepartment()
         {
             Console.WriteLine("Departamentin Adini Daxil Et");
@@ -94,7 +97,7 @@ namespace HumanResourceManager.Services
             Department dep = new Department(departmentName, workerLimit, salaryLimit, new List<Employee>());
             _departments.Add(dep);
             Console.WriteLine(_departments);
-        }
+        }    //Create and add a department
         
         public void AddEmployee()
         {
@@ -130,7 +133,7 @@ namespace HumanResourceManager.Services
             Employee newEmployee = new Employee(fullName, depName,position,salary);
             department.Employees.Add(newEmployee);
             Console.WriteLine(department.Employees);
-        }
+        }    //Create and add employee
 
         public void EditDepartaments( )
         {
@@ -187,12 +190,12 @@ namespace HumanResourceManager.Services
                 }
             }
 
-        }
-
+        }      //To make changes on the department
+         
         public List<Department> GetDepartments()
         {
             return _departments;
-        }
+        }  //Returns all departmentsa in the system
 
         public void RemoveEmployee()
         {
@@ -205,7 +208,7 @@ namespace HumanResourceManager.Services
 
             dep.Employees.Remove(employee);
 
-        }
+        }   //Removal of an employee from the department
 
         public Department FindDepartmentByName(string name)
 
@@ -222,86 +225,91 @@ namespace HumanResourceManager.Services
         public void AddEmployee(Employee employee, string DepartmentName)
         {
             throw new NotImplementedException();
-        }
+        }  //Create employee and add employee to Employees list
 
         public void AddDepartment(Department department)
         {
             throw new NotImplementedException();
-        }
+        }     //Create department and add department to Departments list
 
         public void EditDepartaments(string Name, string newName)
         {
             throw new NotImplementedException();
-        }
+        }   //Change on the department
         
-      public  void EditEmployee()
+        public  void EditEmployee()
         {
-            //Console.WriteLine("Ishcinin adini daxil edin:");
-            //string employeeName = Console.ReadLine();
-            //List<Employee> employees = new List<Employee>();
-            //foreach (Department item in _departments)
-            //{
-            //    foreach (Employee employee in item.Employees)
-            //    {
-            //        employees.Add(employee);
-            //    }
-            //}
-            //Employee em = employees.Find(e => e.FullName.ToLower() == employeeName.ToLower());
-            //while (em == null)
-            //{
-            //    Console.WriteLine("Bele bir ishci movcud deyil !");
-            //    employeeName = Console.ReadLine();
-            //}
+            Console.WriteLine("Ishcinin adini daxil edin:");
+            string employeeName = Console.ReadLine();
+            List<Employee> employees = new List<Employee>();
+            foreach (Department item in _departments)
+            {
+                foreach (Employee employee in item.Employees)
+                {
+                    employees.Add(employee);
+                }
+            }
+            Employee em = employees.Find(e => e.FullName.ToLower() == employeeName.ToLower());
+            while (em == null)
+            {
+                Console.WriteLine("Bele bir ishci movcud deyil !");
+                employeeName = Console.ReadLine();
+            }
 
-            //Console.WriteLine("Duzelish olunacaq Iscinin Nomresini Daxil Et");
-            //string no = Console.ReadLine(); 
-              
-            
+            Console.WriteLine("Duzelish olunacaq Iscinin Nomresini Daxil Et");
+            string no = Console.ReadLine();
 
-            //if (no.ToLower() == em.No.ToLower())
-            //{
-            //    Console.WriteLine("Iscinin Yeni adini  Daxil Et");
-            //    string newName= Console.ReadLine();
-            //    Console.WriteLine("Iscinin Yeni Vezifesini Daxil Et");
-            //    string newPosition = Console.ReadLine();
-            //    Console.WriteLine();
 
-            //    Console.WriteLine("Iscinin Yeni Maashini Daxil Et");
-            //    double NewSalary;
-            //    string NewSalaryInput = Console.ReadLine();
-            //    Console.WriteLine();
-            //    while (!double.TryParse(NewSalaryInput, out NewSalary))
-            //    {
 
-            //        Console.WriteLine();
-            //        Console.WriteLine("Reqem daxil edilmelidir!");
-            //        NewSalaryInput = Console.ReadLine();
-            //        Console.WriteLine();
-            //    }
+            if (no.ToLower() == em.No.ToLower())
+            {
+                Console.WriteLine("Iscinin Yeni adini  Daxil Et");
+                string newName = Console.ReadLine();
+                Console.WriteLine("Iscinin Yeni Vezifesini Daxil Et");
+                string newPosition = Console.ReadLine();
+                Console.WriteLine();
+
+                Console.WriteLine("Iscinin Yeni Maashini Daxil Et");
+                double NewSalary;
+                string NewSalaryInput = Console.ReadLine();
+                Console.WriteLine();
+                while (!double.TryParse(NewSalaryInput, out NewSalary))
+                {
+
+                    Console.WriteLine();
+                    Console.WriteLine("Reqem daxil edilmelidir!");
+                    NewSalaryInput = Console.ReadLine();
+                    Console.WriteLine();
+                }
+
+
+                foreach (Department item in _departments)
+                {
+                    foreach (Employee employee in item.Employees)
+                    {
+                        if (employee.No.ToLower() == no.ToLower())
+                        {
+                            Employee e = new Employee(newName, item.Name, newPosition, NewSalary);
+                            e.No = no;
+                            item.Employees.Add(e);
+                            item.Employees.Remove(employee);
+                        }
+                    }
+                }
+                Console.WriteLine(_departments);
+            }
+            else
+            {
+                Console.WriteLine("Axtarishiniza Uygun Ishci Yoxdur");
+            }
+        }  //To make changes on the employee
 
            
-            //    foreach (Department item in _departments)
-            //    {
-            //        foreach (Employee employee in item.Employees)
-            //        {
-            //            if (employee.No.ToLower() ==no.ToLower())
-            //            {
-            //                Employee e = new Employee(newName, item.Name, newPosition, NewSalary);
-            //                e.No = no;
-            //                item.Employees.Add(e);
-            //                item.Employees.Remove(employee);
-            //            } 
-            //        }
-            //    }
-            //    Console.WriteLine(_departments);
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Axtarishiniza Uygun Ishci Yoxdur");
-            //}
-        }
 
-  
+        public List<Employee> EditEmployee(string no,string fullName, double salary,string position)
+        {
+            return _employee.FindAll(e => e.No.ToLower() == no.ToLower() && e.FullName.ToLower() == fullName.ToLower() && e.Salary == salary && e.Position.ToLower() == position.ToLower());
+        }   //Change on the employee
     }
 
 }
